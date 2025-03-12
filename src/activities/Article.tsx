@@ -3,7 +3,7 @@ import { useFlow } from "../stackflow";
 
 type ArticleParams = {
   params: {
-    title: number[];
+    title: string;
   };
 };
 
@@ -16,11 +16,7 @@ const Article: React.FC<ArticleParams> = ({ params: { title } }) => {
   return (
     <AppScreen appBar={{ title: "Article" }}>
       <div>
-        <h1>
-          {title?.map((item) => (
-            <em>{item}</em>
-          ))}
-        </h1>
+        <h1>{title}</h1>
         <button onClick={onClickPop}>Del</button>
       </div>
     </AppScreen>
