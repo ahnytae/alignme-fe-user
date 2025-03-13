@@ -1,5 +1,3 @@
-import { ActivityComponentType, useActivity, useStack } from "@stackflow/react";
-import { useFlow } from "../stackflow";
 import { useEffect, useState } from "react";
 import Layout from "../components/Layout";
 import { getContents } from "../api/content";
@@ -7,6 +5,7 @@ import { GetMemberOfStudioInfo, getMemberOfStudioInfo } from "../api/user";
 import { Content } from "../model/contentModel";
 import useContent from "../stores/useContent";
 import useUserStore from "../stores/useUserStore";
+import { useFlow } from "@stackflow/react/dist/future";
 
 export interface ExerciseItem {
   name: string;
@@ -22,11 +21,8 @@ export interface InstructorInfo {
   imageUrl: string;
 }
 
-const MainActivities = () => {
-  const stack = useStack();
-  const activity = useActivity();
-
-  const { push, replace } = useFlow();
+const MainActivity = () => {
+  const { push } = useFlow();
 
   const { setStudioName, setMemberOfInstructor } = useUserStore();
   const {
@@ -59,9 +55,9 @@ const MainActivities = () => {
     setInstructorInfo(content.instructor);
 
     // navigate(`/content/${content.id}`);
-    push('Article', {
-      title: `${content.id}`
-    })
+    push("DetailContentActivities", {
+      contentId: content.id,
+    });
   };
 
   useEffect(() => {
@@ -86,7 +82,7 @@ const MainActivities = () => {
   }, []);
 
   return (
-    <Layout appBar={{ title: "Main" }}>
+    <Layout appBar={{ title: "운동 컨텐츠" }}>
       <div className="mx-auto flex w-full max-w-[480px] flex-col">
         {/* Header */}
         <div className="flex w-full items-center gap-3 bg-white pb-4 pt-8">
@@ -145,7 +141,7 @@ const MainActivities = () => {
   );
 };
 
-export default MainActivities;
+export default MainActivity;
 
 const ExerciseCard = ({ exercise }: { exercise: Content }) => {
   // const navigate = useNavigate();
