@@ -4,7 +4,7 @@ import { setCookie } from "@/common/cookie";
 import { AuthModel } from "@/model/authModel";
 import useAuthStore from "@/stores/useAuthStore";
 import useUserStore from "@/stores/useUserStore";
-import { useFlow } from "@stackflow/react/dist/future";
+import { useFlow } from "@stackflow/react/future";
 import { useEffect } from "react";
 
 export default function useAuthRedirect() {

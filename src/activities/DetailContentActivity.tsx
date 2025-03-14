@@ -1,6 +1,6 @@
 import Layout from "@/components/Layout";
 import useContent from "@/stores/useContent";
-import { Link } from "@stackflow/link/dist/future";
+import { Link } from "@stackflow/link/future";
 
 type DetailContentParams = {
   params: {

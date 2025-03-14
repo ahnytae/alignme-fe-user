@@ -5,7 +5,7 @@ import { GetMemberOfStudioInfo, getMemberOfStudioInfo } from "../api/user";
 import { Content } from "../model/contentModel";
 import useContent from "../stores/useContent";
 import useUserStore from "../stores/useUserStore";
-import { useFlow } from "@stackflow/react/dist/future";
+import { useFlow } from "@stackflow/react/future";
 
 export interface ExerciseItem {
   name: string;

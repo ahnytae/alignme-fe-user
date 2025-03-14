@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { getSignupMemberInfo, GetSignupMemberInfo } from "@/api/user";
-import { useFlow } from "@stackflow/react/dist/future";
+import { useFlow } from "@stackflow/react/future";
 
 export default function JoinWaiitingActivity() {
   const [getInfo, setGetInfo] = useState<GetSignupMemberInfo>();
