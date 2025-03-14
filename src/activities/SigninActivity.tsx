@@ -1,5 +1,5 @@
 import { kakaoRedirectUrl } from "@/common/urls";
-import { useStepFlow } from "@stackflow/react/dist/future";
+import { useStepFlow } from "@stackflow/react/future";
 
 export default function SigninActivity() {
   const { pushStep } = useStepFlow("SigninActivity")

@@ -1,18 +1,21 @@
 import { toast, ToastContainer } from "react-toastify";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
-import { useFlow, type ActivityComponentType } from "@stackflow/react/dist/future";
+import {
+  useFlow,
+  type ActivityComponentType,
+} from "@stackflow/react/future";
+import { VideoPoseLandmarker } from "@ahnytae/alignme-core/dist";
+import PortraitAlert from "@/components/PortraitAlert";
 
 const PoseEntryActivity: ActivityComponentType<"PoseEntryActivity"> = ({
   params,
 }) => {
-
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
   // const [poseInfo, setPoseInfo] = useState<PoseData>();
 
   const { push } = useFlow();
-  const contentId = params.contentId;
 
   const [isLandScape, setIsLandScape] = useState(true);
 
@@ -68,13 +71,17 @@ const PoseEntryActivity: ActivityComponentType<"PoseEntryActivity"> = ({
   }, [videoRef.current, canvasRef.current, isLandScape]);
 
   const onSuccess = (status: boolean) => {
+    const contentId = params.contentId;
+
     if (!status) {
       toast.error("유효한 자세 필요");
       toast.clearWaitingQueue();
       return;
     } else {
       toast.success("자세인식 준비 완료");
-      navigate(`/content/${id}/pose-content`);
+      push("PlayContentActivity", {
+        contentId,
+      });
     }
   };
 

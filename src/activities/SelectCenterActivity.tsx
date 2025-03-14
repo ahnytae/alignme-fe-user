@@ -1,7 +1,7 @@
 import { getStudio, Studio } from "@/api/studio";
 import LessonCenterListItem from "@/components/LessonCenterListItem";
 import SearchBar from "@/components/SearchBar";
-import { useFlow } from "@stackflow/react/dist/future";
+import { useFlow } from "@stackflow/react/future";
 import { useState } from "react";
 
 export default function SelectCenterActivity() {

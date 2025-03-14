@@ -1,7 +1,7 @@
 import { getInstrucotrsOnStudio, Instructors } from "@/api/studio";
 import { joinMember } from "@/api/user";
 import InstructorListItem from "@/components/InstructorListItem";
-import { ActivityComponentType, useFlow } from "@stackflow/react/dist/future";
+import { ActivityComponentType, useFlow } from "@stackflow/react/future";
 import { useEffect, useState } from "react";
 
 const SelectInstructorActivity: ActivityComponentType<

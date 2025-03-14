@@ -1,11 +1,13 @@
-import { ActivityComponentType } from "@stackflow/react/dist/future";
+import { getContentById } from "@/api/content";
+import SuccessIndicator from "@/components/SuccessIndicator";
+import { ActivityComponentType } from "@stackflow/react/future";
 import { useLayoutEffect, useRef, useState } from "react";
+import { IPose, VideoPoseLandmarker } from "@ahnytae/alignme-core/dist";
+import { IPoseData } from "@/model/poseModel";
 
 export const PlayContentActivity: ActivityComponentType<
   "PlayContentActivity"
 > = ({ params }) => {
-  // const isPortrait = useScreenOrientation();
-
   const contentId = params.contentId;
 
   const videoRef = useRef<HTMLVideoElement | null>(null);
@@ -16,7 +18,6 @@ export const PlayContentActivity: ActivityComponentType<
 
   const [isPassed, setPassed] = useState(false);
 
-  const [isStart, setIsStart] = useState(false);
   const [score, setScore] = useState(0);
 
   const handleScore = (score: number) => {
@@ -82,13 +83,8 @@ export const PlayContentActivity: ActivityComponentType<
     window.location.replace("/contents");
   }
 
-  function onStart() {
-    setIsStart(true);
-  }
-
   return (
     <>
-      {/* {isStart ? ( */}
       <div className="h-screen w-full bg-black">
         {/* Navigation */}
         <div className="flex items-center gap-3 px-4 py-3 text-white">
