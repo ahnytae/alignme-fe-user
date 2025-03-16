@@ -2,7 +2,6 @@ import { basicUIPlugin } from "@stackflow/plugin-basic-ui";
 import { basicRendererPlugin } from "@stackflow/plugin-renderer-basic";
 import { stackflow } from "@stackflow/react/future";
 import MainActivities from "../activities/MainActivity";
-import DetailContentActivities from "@/activities/DetailContentActivity";
 import PoseEntryActivity from "@/activities/PoseEntryActivity";
 import { config } from "./stackflow.config";
 import { historySyncPlugin } from "@stackflow/plugin-history-sync";
@@ -12,6 +11,7 @@ import JoinPendingActivity from "@/activities/JoinPendingActivity";
 import SelectCenterActivity from "@/activities/SelectCenterActivity";
 import SelectInstructorActivity from "@/activities/SelectInstructorActivity";
 import JoinWaiitingActivity from "@/activities/JoinWaiitingActivity";
+import DetailContentActivity from "@/activities/DetailContentActivity";
 
 export const { Stack } = stackflow({
   config,
@@ -22,7 +22,7 @@ export const { Stack } = stackflow({
     SelectInstructorActivity,
     JoinWaiitingActivity,
     MainActivities,
-    DetailContentActivities,
+    DetailContentActivity,
     PoseEntryActivity,
     PlayContentActivity,
   },

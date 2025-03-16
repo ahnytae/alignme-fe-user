@@ -54,7 +54,6 @@ const MainActivity = () => {
     setImageUrl(content.imageUrl);
     setInstructorInfo(content.instructor);
 
-    // navigate(`/content/${content.id}`);
     push("DetailContentActivities", {
       contentId: content.id,
     });

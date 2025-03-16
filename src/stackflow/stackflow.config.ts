@@ -1,12 +1,15 @@
 import { defineConfig } from "@stackflow/config";
-import { ActivityDefinition, Config } from "@stackflow/config";
 
 export const config = defineConfig({
   activities: [
     {
       name: "SigninActivity",
-      route: "/signin",
+      route: "/",
     },
+    // {
+    //   name: "AuthRedirectActivity",
+    //   route: "/auth/kakao/success",
+    // },
     {
       name: "JoinPendingActivity",
       route: "/signup/pending",

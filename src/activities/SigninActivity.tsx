@@ -1,14 +1,8 @@
 import { kakaoRedirectUrl } from "@/common/urls";
-import { useStepFlow } from "@stackflow/react/future";
 
 export default function SigninActivity() {
-  const { pushStep } = useStepFlow("SigninActivity")
-
   async function handleSignin() {
-    pushStep({
-      kakaoRedirectUrl
-    })
-    // window.location.replace(kakaoRedirectUrl);
+    window.location.replace(kakaoRedirectUrl);
   }
 
   return (
@@ -40,7 +34,7 @@ export default function SigninActivity() {
         >
           <img
             loading="lazy"
-            src="assets/kakaobtn.svg"
+            src="/assets/kakaobtn.svg"
             alt="Kakao icon"
             className="my-auto aspect-square w-6 shrink-0 self-stretch object-contain"
           />

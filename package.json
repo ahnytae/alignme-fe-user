@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@ahnytae/alignme-core": "^1.0.29",
+    "@ahnytae/alignme-core": "1.0.31",
     "@stackflow/compat-await-push": "^1.1.13",
     "@stackflow/config": "^1.2.0",
     "@stackflow/core": "^1.1.0",
