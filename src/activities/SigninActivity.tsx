@@ -1,8 +1,12 @@
 import { kakaoRedirectUrl } from "@/common/urls";
+import { useFlow } from "@stackflow/react/future";
 
 export default function SigninActivity() {
+  const { push, replace } = useFlow();
+
   async function handleSignin() {
-    window.location.replace(kakaoRedirectUrl);
+    window.location.href = kakaoRedirectUrl;
+    replace("AuthRedirectActivity", {});
   }
 
   return (

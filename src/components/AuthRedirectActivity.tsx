@@ -5,9 +5,9 @@ import { AuthModel } from "@/model/authModel";
 import useAuthStore from "@/stores/useAuthStore";
 import useUserStore from "@/stores/useUserStore";
 import { useFlow } from "@stackflow/react/future";
-import { useEffect } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 
-export default function AuthRedirectPage() {
+export default function AuthRedirectActivity() {
   const { setKakaoMemberId, setEmail, setUserName, setIsMainInstructor } =
     useUserStore();
   const { push, replace } = useFlow();
@@ -20,6 +20,7 @@ export default function AuthRedirectPage() {
     (async () => {
       try {
         const code = new URL(window.location.href).searchParams.get("code");
+        console.log("!!", code);
 
         const {
           data: {
@@ -29,7 +30,7 @@ export default function AuthRedirectPage() {
 
         setCookie("accessToken", accessToken);
         // setCookie('refreshToken', refreshToken);
-        setIsLogin(true);
+        // setIsLogin(true);
 
         const {
           data: { id, kakaoMemberId, email, name },
@@ -40,10 +41,12 @@ export default function AuthRedirectPage() {
         setKakaoMemberId(`${kakaoMemberId}`);
 
         if (isAlready) {
-          // setIsLogin(true);
-          replace("MainActivities", {});
+          setIsLogin(true);
+          // push("MainActivity", {});
+          window.location.href = "http://localhost:3000/contents";
         } else {
-          push("SelectCenterActivity", {});
+          // push("SelectCenterActivity", {});
+          window.location.href = "http://localhost:3000/lesson-center";
         }
       } catch (error) {
         alert(error);

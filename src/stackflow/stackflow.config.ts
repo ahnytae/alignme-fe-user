@@ -6,10 +6,10 @@ export const config = defineConfig({
       name: "SigninActivity",
       route: "/",
     },
-    // {
-    //   name: "AuthRedirectActivity",
-    //   route: "/auth/kakao/success",
-    // },
+    {
+      name: "AuthRedirectActivity",
+      route: "/auth/kakao/success",
+    },
     {
       name: "JoinPendingActivity",
       route: "/signup/pending",
@@ -32,17 +32,14 @@ export const config = defineConfig({
     },
     {
       name: "DetailContentActivity",
-      route: "/content/:id",
+      route: {
+        path: "/contents/:contentId",
+      },
     },
     {
       name: "PoseEntryActivity",
       route: {
         path: "/content/:id/pose-entry",
-        // decode(params) {
-        //   return {
-        //     contentId: Number(params["id"]),
-        //   };
-        // },
       },
     },
     {
@@ -52,6 +49,6 @@ export const config = defineConfig({
       },
     },
   ],
-  initialActivity: () => "MainActivity",
+  initialActivity: () => "SigninActivity",
   transitionDuration: 270,
 });
