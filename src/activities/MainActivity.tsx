@@ -6,6 +6,7 @@ import { Content } from "../model/contentModel";
 import useContent from "../stores/useContent";
 import useUserStore from "../stores/useUserStore";
 import { useFlow } from "@stackflow/react/future";
+import { BottomSheet } from "@stackflow/plugin-basic-ui";
 
 export interface ExerciseItem {
   name: string;
@@ -136,6 +137,10 @@ const MainActivity = () => {
           </div>
         </div>
       </div>
+
+      <BottomSheet>
+        <div>Footer</div>
+      </BottomSheet>
     </Layout>
   );
 };

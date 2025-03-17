@@ -9,19 +9,20 @@ import SigninActivity from "@/activities/SigninActivity";
 import JoinPendingActivity from "@/activities/JoinPendingActivity";
 import SelectCenterActivity from "@/activities/SelectCenterActivity";
 import SelectInstructorActivity from "@/activities/SelectInstructorActivity";
-import JoinWaiitingActivity from "@/activities/JoinWaiitingActivity";
+import JoinWaitingActivity from "@/activities/JoinWaitingActivity";
 import DetailContentActivity from "@/activities/DetailContentActivity";
 import AuthRedirectActivity from "@/activities/AuthRedirectActivity";
+import { historySyncPlugin } from "@stackflow/plugin-history-sync";
 
 export const { Stack } = stackflow({
   config,
   components: {
     SigninActivity,
     AuthRedirectActivity,
-    JoinPendingActivity,
     SelectCenterActivity,
     SelectInstructorActivity,
-    JoinWaiitingActivity,
+    JoinWaitingActivity,
+    JoinPendingActivity,
     MainActivity,
     DetailContentActivity,
     PoseEntryActivity,
@@ -33,9 +34,9 @@ export const { Stack } = stackflow({
       theme: "cupertino",
     }),
     //Todo: / 붙으므로 추후 개선 필요
-    // historySyncPlugin({
-    //   config,
-    //   fallbackActivity: () => "SigninActivity",
-    // }),
+    historySyncPlugin({
+      config,
+      fallbackActivity: () => "SigninActivity",
+    }),
   ],
 });

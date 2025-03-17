@@ -6,7 +6,7 @@ import { useFlow } from "@stackflow/react/future";
 import { useState } from "react";
 
 export default function SelectCenterActivity() {
-  const { push } = useFlow();
+  const { replace } = useFlow();
 
   const [searchQuery, setSearchQuery] = useState("");
   const [studioList, setStudioList] = useState<Studio[]>([]);
@@ -25,7 +25,7 @@ export default function SelectCenterActivity() {
   };
 
   const onClickCenter = async (studioId: string) => {
-    push("SelectInstructorActivity", {
+    replace("SelectInstructorActivity", {
       studioId,
     });
   };

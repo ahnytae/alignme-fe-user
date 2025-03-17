@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { getSignupMemberInfo, GetSignupMemberInfo } from "@/api/user";
-import { useFlow } from "@stackflow/react/future";
+import { ActivityComponentType, useFlow } from "@stackflow/react/future";
 
-export default function JoinWaiitingActivity() {
+const JoinWaitingActivity: ActivityComponentType<any> = () => {
   const [getInfo, setGetInfo] = useState<GetSignupMemberInfo>();
 
   const { replace } = useFlow();
@@ -38,4 +38,6 @@ export default function JoinWaiitingActivity() {
       <button onClick={() => replace("SigninActivity", {})}>홈으로</button>
     </div>
   );
-}
+};
+
+export default JoinWaitingActivity;

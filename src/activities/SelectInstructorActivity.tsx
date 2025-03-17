@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 const SelectInstructorActivity: ActivityComponentType<
   "SelectInstructorActivity"
 > = ({ params }) => {
-  const { push } = useFlow();
+  const { push, replace } = useFlow();
 
   const id = params.studioId;
   const [isOpen, setOpen] = useState(false);
@@ -36,7 +36,7 @@ const SelectInstructorActivity: ActivityComponentType<
 
     try {
       await joinMember(id, selectedInstructor?.id || "");
-      push("JoinWaiitingActivity", {});
+      replace("JoinWaitingActivity", {});
     } catch {}
   };
 
