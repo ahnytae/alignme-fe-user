@@ -3,11 +3,9 @@ import { Stack } from "./stackflow";
 
 const App: React.FC = () => {
   return (
-    <StrictMode>
-      <Suspense>
-        <Stack />
-      </Suspense>
-    </StrictMode>
+    <Suspense>
+      <Stack />
+    </Suspense>
   );
 };
 

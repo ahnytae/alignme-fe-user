@@ -1,13 +1,19 @@
 import { kakaoRedirectUrl } from "@/common/urls";
 import { useFlow } from "@stackflow/react/future";
+import { useEffect } from "react";
 
 export default function SigninActivity() {
-  const { push, replace } = useFlow();
+  const { replace } = useFlow();
 
   async function handleSignin() {
     window.location.href = kakaoRedirectUrl;
-    replace("AuthRedirectActivity", {});
   }
+
+  useEffect(() => {
+    if (window.location.href.includes("/success")) {
+      replace("AuthRedirectActivity", {});
+    }
+  }, [window.location.href]);
 
   return (
     <div className="max-sm:max-w-[436px] m-auto flex max-w-[370px] flex-col items-start overflow-hidden px-5 py-3">

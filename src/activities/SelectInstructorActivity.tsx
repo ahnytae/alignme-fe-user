@@ -1,13 +1,14 @@
 import { getInstrucotrsOnStudio, Instructors } from "@/api/studio";
 import { joinMember } from "@/api/user";
 import InstructorListItem from "@/components/InstructorListItem";
+import Layout from "@/components/Layout";
 import { ActivityComponentType, useFlow } from "@stackflow/react/future";
 import { useEffect, useState } from "react";
 
 const SelectInstructorActivity: ActivityComponentType<
   "SelectInstructorActivity"
 > = ({ params }) => {
-  const { replace } = useFlow();
+  const { push } = useFlow();
 
   const id = params.studioId;
   const [isOpen, setOpen] = useState(false);
@@ -18,10 +19,6 @@ const SelectInstructorActivity: ActivityComponentType<
 
   const handleSearch = (value: string) => {
     setSearchQuery(value);
-  };
-
-  const onClickCenter = () => {
-    setOpen((prev) => !prev);
   };
 
   const handleSetSelected = (index: number) => {
@@ -39,7 +36,7 @@ const SelectInstructorActivity: ActivityComponentType<
 
     try {
       await joinMember(id, selectedInstructor?.id || "");
-      replace("JoinWaiitingActivity", {});
+      push("JoinWaiitingActivity", {});
     } catch {}
   };
 
@@ -55,7 +52,7 @@ const SelectInstructorActivity: ActivityComponentType<
   }, [id]);
 
   return (
-    <>
+    <Layout appBar={{ title: "강사 선택" }}>
       <div className="max-sm:max-w-[436px] m-auto flex max-w-[370px] items-center gap-2 overflow-y-scroll">
         <div className="my-auto flex w-[390px] flex-col self-stretch">
           <div className="flex w-full items-center gap-2 border-b border-solid border-b-zinc-200 px-5 py-6">
@@ -83,7 +80,7 @@ const SelectInstructorActivity: ActivityComponentType<
           selectedInstructor={selectedInstructor!}
         />
       )}
-    </>
+    </Layout>
   );
 };
 
