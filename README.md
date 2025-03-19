@@ -1,46 +1,77 @@
-# Getting Started with Create React App
+## AI운동자세 User APP(Alignme) V2 - Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+---
 
-## Available Scripts
+### 소개
 
-In the project directory, you can run:
+Pose Detection API 와 자체 개발한 두 자세간 유사성 비교 모듈을 활용하여 사용자의 운동 자세가 강사의 모범 운동자세와 같은지 피드백을 제공합니다.
 
-### `npm start`
+**_V2 버전에서는 모바일 디바이스에 중점을 두기 위해 기존 React-router-dom 방식에서 [Stackflow](https://stackflow.so/ko/docs/get-started/introduction) 도입._**
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+<div float="left">
+<img src="https://github.com/user-attachments/assets/5f65a047-ed36-4bda-8afc-ac3c52d75f16" width="180" height="250" alt="left"> 
+<img src="https://github.com/user-attachments/assets/5e253e55-9e19-43a3-ae44-2db54525ca0f" width="180" height="250" alt="right">
+<img src="https://github.com/user-attachments/assets/2da4e961-9489-4a53-80d9-cb61e352b968" width="180" height="250" alt="right"> 
+<img src="https://github.com/user-attachments/assets/8f5e4eef-1c6a-4a70-bac0-64f8d1987c72" width="180" height="250" alt="right"> 
+</div>
+<div float="left">
+<img src="https://github.com/user-attachments/assets/1175f0e5-5456-4c42-9613-27da44d6ae74" width="180" height="250" alt="right">
+<img src="https://github.com/user-attachments/assets/eb9fca03-3fba-4547-8968-fd647ac4eecd" width="180" height="250" alt="right"> 
+<img src="https://github.com/user-attachments/assets/1f7fca9a-9196-49ec-bbe6-25cacee65723" width="180" height="250" alt="right">
+<img src="https://github.com/user-attachments/assets/c1ab9897-2f12-475e-a9fd-a4dfd96a6c15" width="180" height="250" alt="right">
+</div>
+<div float="left">
+<img src="https://github.com/user-attachments/assets/4dbc3c32-e920-4427-b0f8-709276a3b412" width="400" height="200" alt="right">
+<img src="https://github.com/user-attachments/assets/9c72900f-2d71-4742-b8e1-96979c3b205b" width="400" height="200" alt="right">
+</div>
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+---
 
-### `npm test`
+### 서비스 구조
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+![Image](https://github.com/user-attachments/assets/0122178b-7c2d-4197-8d54-a2d8187148d2)
 
-### `npm run build`
+- Alignme Core API는 Private NPM에 배포 되어 각 프론트엔드에 API 형태로 연동 중.
+- Alignme Core API는 Pose Detaection API를 사용하여 데이터 추출 후 자체 알고리즘으로 자세 유사성 비교.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+---
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 인프라
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- ### Frontend
 
-### `npm run eject`
+  - **Hosting**: AWS S3
+  - **Framework**: React.js
+  - **Distribution**: CloudFront CDN
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+  ### Backend
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+  - **Hosting**: AWS EC2
+  - **Framework**: Nest.js
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+  ### Database
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+  - **Service**: AWS RDS
+  - **Type**: PostgreSQL, TypeORM
+  - **Tool**: DBeaver
 
-## Learn More
+  ### Network & Security
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+  - **DNS Management**: Route 53
+  - **Domain Management**: Route 53
+  - **SSL Certificate**: AWS Certificate Manager
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+---
+
+### 기능
+
+- PWA 방식으로 앱 설치 / 웹뷰 이용 가능
+- Stackflow 프레임워크 적용으로 자연스러운 화면 이동, 뒤로가기 제어 등 모바일 중심의 서비스
+- JWT, 카카오 Oauth
+- 회원 가입시 레슨장 선택 및 강사 선택 기능
+- 가입승인 받을 시 서비스 이용 가능
+- 운동 화면에서 사용자 모바일 강제 가로모드 체크 및 유도
+- 강사의 운동컨텐츠 데이터를 API로 부터 받아와 온디바이스 형태로 AI 운동피드백 제공
+- 자세분석 Core 모듈 연동과 requestanimationframe을 사용해 매 프레임마다 자세 분석 시각화
+
+---
