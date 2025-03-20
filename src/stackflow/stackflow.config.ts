@@ -39,13 +39,13 @@ export const config = defineConfig({
     {
       name: "PoseEntryActivity",
       route: {
-        path: "/content/:id/pose-entry",
+        path: "/content/:contentId/pose-entry",
       },
     },
     {
       name: "PlayContentActivity",
       route: {
-        path: "/content/:id/pose-content",
+        path: "/content/:contentId/pose-content",
       },
     },
   ],

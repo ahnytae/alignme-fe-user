@@ -7,7 +7,9 @@ declare module "@stackflow/config" {
       studioId: string;
     };
     MainActivity: {};
-    DeatilActivity: {};
+    DetailContentActivity: {
+      contentId: string;
+    };
     PoseEntryActivity: {
       contentId: string;
     };

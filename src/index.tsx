@@ -1,6 +1,6 @@
 import ReactDOM from "react-dom/client";
-import "./index.css";
 import reportWebVitals from "./reportWebVitals";
+import "./index.css";
 import "@stackflow/plugin-basic-ui/index.css";
 import App from "./App";
 

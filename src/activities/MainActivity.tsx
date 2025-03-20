@@ -138,9 +138,9 @@ const MainActivity = () => {
         </div>
       </div>
 
-      <BottomSheet>
+      {/* <BottomSheet>
         <div>Footer</div>
-      </BottomSheet>
+      </BottomSheet> */}
     </Layout>
   );
 };

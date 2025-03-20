@@ -1,6 +1,7 @@
 import Layout from "@/components/Layout";
 import useContent from "@/stores/useContent";
 import { Link } from "@stackflow/link/future";
+import { useFlow, useStack, useStepFlow } from "@stackflow/react/future";
 
 type DetailContentParams = {
   params: {
@@ -13,6 +14,14 @@ const DetailContentActivity: React.FC<DetailContentParams> = ({
 }) => {
   const { title, level, description, createdAt, imageUrl, instructorInfo } =
     useContent();
+
+  const { push, pop, replace } = useFlow();
+
+  function handleEntryPose() {
+    push("PoseEntryActivity", {
+      contentId,
+    });
+  }
 
   return (
     <Layout appBar={{ title: "운동 컨텐츠 상세" }}>
@@ -60,10 +69,11 @@ const DetailContentActivity: React.FC<DetailContentParams> = ({
             </div>
           </div>
         </div>
-        <Link
-          activityName="PoseEntryActivity"
-          activityParams={{ contentId }}
+        <div
+          // activityName="PoseEntryActivity"
+          // activityParams={{ contentId }}
           className="z-10 mt-0 flex w-full flex-col whitespace-nowrap border-t border-solid border-t-zinc-200 bg-white px-6 pb-6 pt-4 text-base font-semibold text-white"
+          onClick={handleEntryPose}
         >
           <button
             className="w-full gap-2 self-stretch overflow-hidden rounded-xl bg-zinc-900 px-4 py-3"
@@ -71,7 +81,7 @@ const DetailContentActivity: React.FC<DetailContentParams> = ({
           >
             시작하기
           </button>
-        </Link>
+        </div>
       </div>
     </Layout>
   );

@@ -12,7 +12,7 @@ import SelectInstructorActivity from "@/activities/SelectInstructorActivity";
 import JoinWaitingActivity from "@/activities/JoinWaitingActivity";
 import DetailContentActivity from "@/activities/DetailContentActivity";
 import AuthRedirectActivity from "@/activities/AuthRedirectActivity";
-// import { historySyncPlugin } from "@stackflow/plugin-history-sync";
+import { historySyncPlugin } from "@stackflow/plugin-history-sync";
 
 export const { Stack } = stackflow({
   config,
@@ -34,9 +34,9 @@ export const { Stack } = stackflow({
       theme: "cupertino",
     }),
     //Todo: / 붙으므로 추후 개선 필요
-    // historySyncPlugin({
-    //   config,
-    //   fallbackActivity: () => "SigninActivity",
-    // }),
+    historySyncPlugin({
+      config,
+      fallbackActivity: () => "SigninActivity",
+    }),
   ],
 });

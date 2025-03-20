@@ -2,20 +2,29 @@ import { toast, ToastContainer } from "react-toastify";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import {
   useFlow,
+  useStack,
   type ActivityComponentType,
 } from "@stackflow/react/future";
 import { VideoPoseLandmarker } from "@ahnytae/alignme-core/dist";
 import PortraitAlert from "@/components/PortraitAlert";
+import Layout from "@/components/Layout";
 
 const PoseEntryActivity: ActivityComponentType<"PoseEntryActivity"> = ({
   params,
 }) => {
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
-
   // const [poseInfo, setPoseInfo] = useState<PoseData>();
+  const { push, pop, replace } = useFlow();
 
-  const { push } = useFlow();
+  function handleExit() {
+    VideoPoseLandmarker.stop();
+    console.log("exit");
+    // pop("DetailContentActivity", {
+    //   contentId: params.contentId,
+    // });
+    pop();
+  }
 
   const [isLandScape, setIsLandScape] = useState(true);
 
@@ -67,7 +76,7 @@ const PoseEntryActivity: ActivityComponentType<"PoseEntryActivity"> = ({
       VideoPoseLandmarker.preCheckEnanbleCam();
     })();
 
-    return () => VideoPoseLandmarker.stop();
+    // return () => VideoPoseLandmarker.stop();
   }, [videoRef.current, canvasRef.current, isLandScape]);
 
   const onSuccess = (status: boolean) => {
@@ -86,7 +95,7 @@ const PoseEntryActivity: ActivityComponentType<"PoseEntryActivity"> = ({
   };
 
   return (
-    <>
+    <Layout appBar={{ title: "pose" }}>
       {!isLandScape ? (
         <div className="h-[100dvh] w-screen bg-black">
           <div className="relative flex h-full w-full">
@@ -134,6 +143,8 @@ const PoseEntryActivity: ActivityComponentType<"PoseEntryActivity"> = ({
             </div>
           </div>
 
+          <button onClick={handleExit}>종료</button>
+
           <ToastContainer
             position="top-center"
             autoClose={2000}
@@ -151,7 +162,7 @@ const PoseEntryActivity: ActivityComponentType<"PoseEntryActivity"> = ({
       ) : (
         <PortraitAlert />
       )}
-    </>
+    </Layout>
   );
 };
 
